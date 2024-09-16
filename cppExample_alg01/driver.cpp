@@ -23,4 +23,3 @@ PYBIND11_MODULE(rounder, m) {
         .def("round", &Rounder::round);
 }
 
-// cl /O2 /LD /I C:/Users/shark/anaconda3/envs/EmotiBit-pyenv-modern/Lib/site-packages/pybind11/include /I C:/Users/shark/anaconda3/envs/EmotiBit-pyenv-modern/Include driver.cpp /link /OUT:rounder.pyd /LIBPATH:C:/Users/shark/anaconda3/envs/EmotiBit-pyenv-modern/libs
