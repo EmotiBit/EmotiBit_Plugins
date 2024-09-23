@@ -5,22 +5,66 @@ The goal of this project is to allow users to take an algorithm written in C++ a
 This could allow a user to develop C++ code and run it on the EmotiBit's firmware, software, and through Python hitting three different metrics.
 
 ## Installation Steps
-* Follow ['this link'](https://github.com/EmotiBit/EmotiBit_Biometric_Lib/tree/master/py) for details on how to setup a basic Anaconda environment.
-  * Everything up to downloading Spyder is a necessary step in the process. Skip downloading the Anaconda environment given, you can find the correct one in the GitHub repo below.
-* Afterwards, follow [this link](url), and import the pyExample_alg01/EmotiBit-pyenv-modern file into your Anaconda environments.
-* Install Visual Studio 2022 and update to the latest version if possible.
+* Follow [this link](https://github.com/EmotiBit/EmotiBit_Plugins) and clone the repository onto your machine.
+* Install Visual Studio 2022, this was tested successfully with 17.11.02.
+* Download ['Anaconda'](https://www.anaconda.com/download/) as shown here.
+* Open an ***Anaconda*** terminal by searching Anaconda Powershell Prompt on your machine and run the command below:
+```bash
+conda config --set channel_priority flexible
+```
+* Import the pyExample_alg01/EmotiBit-pyenv-modern.yml file into Anaconda Navigator by following Environments > Import.
 
 ## Steps to Run Example
-* Clone ['this'](https://github.com/EmotiBit/EmotiBit_Plugins) GitHub Repo onto your machine.
-* Open a ***Anaconda*** terminal and cd into EmotiBit_Plugins/cppExample_alg01
-* Once inside the cloned folder run the commands below:
+* cd inside EmotiBit_Plugins/cppExample_alg01 and run the following commands ***inside an Anaconda terminal***:
 ```bash
+conda activate EmotiBit-pyenv-modern
 mkdir build
 cd build
 cmake ..
 ```
-* After this you should see a rounder.sln file inside your Visual Studio explorer. Open this file.
+* After cmake runs successfully, you will see a rounder.sln created in your build folder.
   * After you open this file, navigate to the top of Visual Studio and find Build > Build Solution.
-  * This will create a rounder.pyd file in either the debug or release folder depending on your machine.
-  * Move the rounder.pyd file into the pyExample_alg01 folder.
-* Now you can try running the pyExample_alg01.py file and you should see numbers correctly being rounded.
+  * This will create a rounder.pyd file in the release folder.
+* Now cd into the EmotiBit_Plugins/pyExample_alg01 folder and run the command below:
+```bash
+python3 pyExample_alg01.py <your roundable number here>
+```
+* The program should output a rounded version of your number!
+
+## How to Modify this to your Use Case
+* Looking at the code given you can see the following lines:
+```cpp
+#ifdef PYBIND11_ENABLED
+#include<pybind11/pybind11.h>
+#endif
+
+// snipped
+
+#ifdef PYBIND11_ENABLED
+namespace py = pybind11;
+
+PYBIND11_MODULE(rounder, m) {
+    py::class_<Rounder>(m, "Rounder")
+        .def(py::init<>())
+        .def("round", &Rounder::round);
+}
+#endif
+```
+* To apply to your own use case, something similar must be done to your code. There are two approaches: if you have a class or a function.
+* If you have a function you use the code below:
+```cpp
+PYBIND11_MODULE(your_function, m) {
+  m.def("your_function", &your_function, "Descripition of your function")
+}
+  ```
+  * This must be repeated for any function you wish to use in Python.
+* If you have a class use this template:
+```cpp
+PYBIND11_MODULE(your_class, m) {
+  py:class_<your_class>(m, "your_class")
+      .def(py::init<>())
+      .def("your_method", &your_class::your_method)
+      .def("your_method1", &your_class::your_method1);
+}
+  ```
+
