@@ -1,33 +1,38 @@
-# Welcome to a Toy PyBind11 Algorithm
+# Porting an algorithm from C++ to Python
 
 ## Why?
 The goal of this project is to allow users to take an algorithm written in C++ and translate that into runnable Python code.
 This could allow a user to develop C++ code and run it on the EmotiBit's firmware, software, and through Python hitting three different metrics.
 
 ## Installation Steps
+* ***This guide must be followed on a Windows machine***
 * Follow [this link](https://github.com/EmotiBit/EmotiBit_Plugins) and clone the repository onto your machine.
 * Install Visual Studio 2022, this was tested successfully with 17.11.02.
 * Download ['Anaconda'](https://www.anaconda.com/download/) as shown here.
-* Open an ***Anaconda*** terminal by searching Anaconda Powershell Prompt on your machine and run the command below:
+* Open an ***Anaconda Powershell Prompt*** by searching Anaconda Powershell Prompt on your machine and run the command below:
 ```bash
+cd C:/path/to/your/EmotiBit_Plugins/pyExample_alg01
 conda config --set channel_priority flexible
+conda env update --name EmotiBit-pyenv-modern --file .\EmotiBit-pyenv-modern.yml
 ```
-* Import the pyExample_alg01/EmotiBit-pyenv-modern.yml file into Anaconda Navigator by following Environments > Import.
+  * *The cd command changes your directory that you are in and will be pivotal moving forward.*
 
 ## Steps to Run Example
-* cd inside EmotiBit_Plugins/cppExample_alg01 and run the following commands ***inside an Anaconda terminal***:
+* Run the following commands ***inside the same Anaconda terminal from earlier***:
 ```bash
 conda activate EmotiBit-pyenv-modern
+cd ..\cppExample_alg01\
 mkdir build
 cd build
 cmake ..
 ```
-* After cmake runs successfully, you will see a rounder.sln created in your build folder.
-  * After you open this file, navigate to the top of Visual Studio and find Build > Build Solution.
+* After cmake runs successfully, a rounder.sln created in your build folder.
+  * Open this file in Visual Studio and navigate to the top and make sure it says ***Release*** and not Debug.
+  * Now navigate to Build > Build Solution
   * This will create a rounder.pyd file in the release folder.
-* Now cd into the EmotiBit_Plugins/pyExample_alg01 folder and run the command below:
+* Now cd (in the Anaconda terminal used earlier) into the EmotiBit_Plugins/pyExample_alg01 folder and run the command below:
 ```bash
-python3 pyExample_alg01.py <your roundable number here>
+python3 pyExample_alg01.py -i 3.4
 ```
 * The program should output a rounded version of your number!
 
