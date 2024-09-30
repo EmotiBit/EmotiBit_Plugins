@@ -15,10 +15,7 @@ def main():
                         type = float,
                         help = "The number that gets rounded")
     args = parser.parse_args()
-    if args.input:
-        num = sys.argv[1]
-    else:
-        num = 5.5
+    num = args.input if args.input else 5.5
 
     print(r.round(num))
 
