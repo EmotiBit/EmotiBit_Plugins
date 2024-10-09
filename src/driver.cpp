@@ -1,6 +1,7 @@
 #include<cmath>
-#include<iostream>
+#ifdef PYBIND11_ENABLED
 #include<pybind11/pybind11.h>
+#endif
 
 class Rounder {
     public:
@@ -15,6 +16,7 @@ int main() {
     r.round(num);
 }
 
+#ifdef PYBIND11_ENABLED
 namespace py = pybind11;
 
 PYBIND11_MODULE(rounder, m) {
@@ -22,4 +24,4 @@ PYBIND11_MODULE(rounder, m) {
         .def(py::init<>())
         .def("round", &Rounder::round);
 }
-
+#endif
