@@ -6,7 +6,13 @@
 #include<pybind11/pybind11.h>
 #endif
 
-class Rounder {
+#ifdef BUILDING_ROUNDER_DLL
+    #define ROUND_EXPORT __declspec(dllexport)
+#else
+    #define ROUND_EXPORT __declspec(dllimport)
+#endif
+
+class ROUND_EXPORT Rounder {
     public:
 	int round(double num);
 };
