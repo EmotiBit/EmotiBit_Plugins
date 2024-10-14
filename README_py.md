@@ -21,7 +21,7 @@ conda env update --name EmotiBit-pyenv-modern --file .\EmotiBit-pyenv-modern.yml
 * Run the following commands ***inside the same Anaconda terminal from earlier***:
 ```bash
 conda activate EmotiBit-pyenv-modern
-cd ..\cppExample_alg01\
+cd ..\src\
 mkdir build
 cd build
 cmake ..
