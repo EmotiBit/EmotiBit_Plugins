@@ -12,7 +12,6 @@ This could allow a user to develop C++ code and run it on the EmotiBit's firmwar
 ## Steps to Run Example
 * Run the following commands ***inside the same Anaconda terminal from earlier***:
 ```bash
-conda activate EmotiBit-pyenv-modern
 cd ..\src\
 mkdir build
 cd build

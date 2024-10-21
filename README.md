@@ -12,6 +12,7 @@ Examples and information to make EmotiBit plugins. The intention for this repo i
 cd C:\path\to\your\EmotiBit_Plugins\pyExample_alg01
 conda config --set channel_priority flexible
 conda env update --name EmotiBit-pyenv-modern --file .\EmotiBit-pyenv-modern.yml
+conda activate EmotiBit-pyenv-modern
 ```
   * *After following the steps above, follow one of the README's below to accomplish your goal*
 

@@ -4,7 +4,7 @@ project(rounder)
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 
-set(SOURCES driver.cpp alg01.cpp)
+set(SOURCES alg01.cpp)
 
 pybind11_add_module(rounder ${SOURCES})
 

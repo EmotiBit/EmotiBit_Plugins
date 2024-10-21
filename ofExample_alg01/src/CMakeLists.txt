@@ -9,6 +9,8 @@ add_library(rounder SHARED ${SOURCES})
 
 set_target_properties(rounder PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED YES)
 
+target_compile_definitions(rounder PRIVATE BUILDING_ROUNDER_DLL)
+
 add_executable(rounder_test ${SRC_DIR}/driver.cpp)
 
 target_link_libraries(rounder_test PRIVATE rounder)

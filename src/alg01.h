@@ -3,8 +3,7 @@
 
 #include<cmath>
 
-
-#include "export_to_dll.h"
+#include "dll_config.h"
 
 class ROUND_EXPORT Rounder {
     public:
