@@ -6,15 +6,7 @@ This could allow a user to develop C++ code and run it on the EmotiBit's firmwar
 
 ## Installation Steps
 * ***This guide must be followed on a Windows machine***
-* Follow [this link](https://github.com/EmotiBit/EmotiBit_Plugins) and clone the repository onto your machine.
-* Install Visual Studio 2022, this was tested successfully with 17.11.02.
-* Download ['Anaconda'](https://www.anaconda.com/download/) as shown here.
-* Open an ***Anaconda Powershell Prompt*** by searching Anaconda Powershell Prompt on your machine and run the command below:
-```bash
-cd C:/path/to/your/EmotiBit_Plugins/pyExample_alg01
-conda config --set channel_priority flexible
-conda env update --name EmotiBit-pyenv-modern --file .\EmotiBit-pyenv-modern.yml
-```
+* Follow [this README](README.md) for installation steps and then follow the example below.
   * *The cd command changes your directory that you are in and will be pivotal moving forward.*
 
 ## Steps to Run Example
