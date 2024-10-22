@@ -1,13 +1,17 @@
-#include "alg01.h"
+#ifndef ALG_01
+#define ALG_01
 
-int Rounder::round(double num) {
-    return static_cast<int>(std::round(num));
-}
-
-// Pybind11 config is not in a separate file as it is dependant on the algorithm, unlike the DLL_config
+#include<cmath>
 #ifdef PYBIND11_ENABLED
-
 #include<pybind11/pybind11.h>
+#endif
+
+class Rounder {
+    public:
+	int round(double num);
+};
+
+#ifdef PYBIND11_ENABLED
 namespace py = pybind11;
 
 PYBIND11_MODULE(rounder, m) {
@@ -15,4 +19,6 @@ PYBIND11_MODULE(rounder, m) {
         .def(py::init<>())
         .def("round", &Rounder::round);
 }
+#endif
+
 #endif
