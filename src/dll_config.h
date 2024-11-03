@@ -2,11 +2,13 @@
 #define EXPORT_TO_DLL_H
 
 #ifdef BUILDING_ROUNDER_DLL
-    #define ROUND_EXPORT __declspec(dllexport)
+// Used when building the DLL itself. It is what is used for our purposes specifically.
+    #define EXPORT_TO_DLL __declspec(dllexport)
 #elif defined(USING_ROUNDER_DLL)
-    #define ROUND_EXPORT __declspec(dllimport)
+// This is used when the DLL needs to be in a different module.
+    #define EXPORT_TO_DLL __declspec(dllimport)
 #else
-    #define ROUND_EXPORT
+    #define EXPORT_TO_DLL
 #endif
 
 #endif

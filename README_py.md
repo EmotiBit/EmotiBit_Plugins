@@ -13,9 +13,7 @@ This could allow a user to develop C++ code and run it on the EmotiBit's firmwar
 * Run the following commands ***inside the same Anaconda terminal from earlier***:
 ```bash
 cd ..\src\
-mkdir build
-cd build
-cmake ..
+cmake -S . -B build
 ```
 * After cmake runs successfully, a rounder.sln created in your build folder.
   * Open this file in Visual Studio and navigate to the top and make sure it says ***Release*** and not Debug.
@@ -26,6 +24,8 @@ cmake ..
 python3 pyExample_alg01.py -i 3.4
 ```
 * The program should output a rounded version of your number!
+
+***NOTE: The section below remains undeveloped. Consider confronting the GitHub repository issue associated to design a better solution.***
 
 ## How to Modify this to your Use Case
 * Looking at the code given you can see the following lines:

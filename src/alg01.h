@@ -5,7 +5,7 @@
 
 #include "dll_config.h"
 
-class ROUND_EXPORT Rounder {
+class EXPORT_TO_DLL Rounder {
     public:
 	int round(double num);
 };
