@@ -63,10 +63,8 @@ conda activate EmotiBit-pyenv-modern
 # Example-Rounder 
 ## Steps to Run Example
 
-```bash
-cd ..\src\
-cmake -S . -B build
-```
+- cd to `src`
+- run the command `cmake -S . -B build`
 - After cmake runs successfully, a rounder.sln created in your build folder.
   - Open this file in Visual Studio and navigate to the top and make sure it says ***Release*** and not Debug.
   - Now navigate to Build > Build Solution
@@ -78,3 +76,12 @@ python3 pyExample_alg01.py -i 3.4
 
 ***NOTE: The section below remains undeveloped. Consider confronting the GitHub repository issue associated to design a better solution.***
 
+# Adapting this to your C++ code
+- Add pybind11 bindings to your C++ source. Refer the [pybind11 documentation](https://pybind11.readthedocs.io/en/stable/basics.html) for more information.
+- Create a new CMakeLists.txt file that
+  - includes your source files in SOURCES
+  - provides path to the pybind11_DIR
+  - defines a new project
+- Run cmake to create visual studio solution
+- build the visual studio solution to create the `.pyd` file
+- use the `.pyd` file in your python script
