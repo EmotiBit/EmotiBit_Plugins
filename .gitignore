@@ -33,3 +33,8 @@
 
 # Visual Studio
 *.vs
+**/build/**
+py_envs/*/
+
+# dynamic libraries
+**/*.pyd

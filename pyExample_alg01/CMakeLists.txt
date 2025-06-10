@@ -3,13 +3,13 @@
 cmake_minimum_required(VERSION 3.4...3.18)
 project(rounder)
 
+set(pybind11_DIR "${CMAKE_CURRENT_SOURCE_DIR}\\..\\py_envs\\emotibit_plugins\\Lib\\site-packages\\pybind11\\share\\cmake\\pybind11")
+
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 
-set(SOURCES alg01.cpp)
+set(SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/../src/alg01.cpp")
 
 pybind11_add_module(rounder ${SOURCES})
 
 target_compile_definitions(rounder PRIVATE PYBIND11_ENABLED)
-
-target_compile_definitions(rounder PRIVATE VERSION_INFO=${EXAMPLE_VERSION_INFO})
