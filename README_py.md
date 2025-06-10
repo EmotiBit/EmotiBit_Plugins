@@ -70,7 +70,7 @@ conda activate EmotiBit-pyenv-modern
   - Now navigate to Build > Build Solution
   - This will create a rounder.pyd file in the release folder.
 ```bash
-python3 pyExample_alg01.py -i 3.4
+python3 example.py -i 3.4
 ```
 * The program should output a rounded version of your number!
 
