@@ -3,6 +3,8 @@
 cmake_minimum_required(VERSION 3.4...3.18)
 project(rounder)
 
+set(pybind11_DIR "S:\\dev\\CFL\\EmotiBit\\Software\\EmotiBit_Plugins\\py_envs\\emotibit_plugins\\Lib\\site-packages\\pybind11\\share\\cmake\\pybind11")
+
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 

@@ -4,11 +4,57 @@
 The goal of this project is to allow users to take an algorithm written in C++ and translate that into runnable Python code.
 This could allow a user to develop C++ code and run it on the EmotiBit's firmware, software, and through Python hitting three different metrics.
 
-## Installation Steps
-* ***This guide must be followed on a Windows machine***
-* Follow [this README](README.md) for installation steps and then follow the example below.
-  * *The cd command changes your directory that you are in and will be pivotal moving forward.*
+## How it works
+- We use pybind11 to create bindings for existing c++ code to a dynamic python library.
+- These bindings essentially define the class/function prototypes, in the pybind11 formati. An example of a binding would look like
+```c++
+	py::class_<EmotiBitPacket>(m, "EmotiBitPacket")
+		.def(py::init<>());
+	m.def("createHeader", &EmotiBitPacket::createHeader);
+	m.def("headerToString", &EmotiBitPacket::headerToString);
+```
+- The pybind11 python library (installed in the virtual environment) contains the source code to perform the mapping from a c++ file to a `.pyd` file.
+- The flow to go from .cpp to .pyd looks like
+  - Create Visual Studio sln file using CMAKE
+  - Build Visual Studio project to create the `.pyd` file
+  - Run the python script that uses C++ cource code refernce, after adding the path/to/pyd file in the python script
 
+
+## Installation Steps
+***This guide must be followed on a Windows machine***
+
+### Creating an environment in python
+#### Using venv
+- Open a ne comman prompt window
+- `cd` to the EmotiBit_Plugins repository
+- Run the following command `python -m venv .\py_envs\<env-name>`
+  - replace `<env-name>` with the environment name
+- Activate the new environment by running the command `.\py_envs\<env-name>\Scripts\activate.bat`
+  - You will see the prompt in the terminal change. It now shows the python environment in parenthesis.
+- Run the following command to install bypind11. `pip install pybind11==2.13.5`
+
+#### Using anaconda
+- Download [Anaconda](https://www.anaconda.com/download/) as shown here.
+- ***Do not close out of the Anaconda Powershell Prompt until completely done with an example***
+- Open an Anaconda Powershell Prompt through the search feature on your machine and run the command below
+```bash
+cd C:\path\to\your\EmotiBit_Plugins\pyExample_alg01
+conda config --set channel_priority flexible
+conda env update --name EmotiBit-pyenv-modern --file .\EmotiBit-pyenv-modern.yml
+conda activate EmotiBit-pyenv-modern
+```
+
+# Example EmotiBitPacket
+- Notes:
+  - The EmotiBit Packet .h/.cpp files (and any dependencies) were copied to the `EmotiBit_Plugins\example_emotiBitPacket`. ToDo: figure out a way where this copy/paste is not required. We will probably have to wait till a point where the pybind11 bindings are added to the EmotiBitPacket header in the XPlat_Utils main release.
+## Building the example
+- cd to `example_emotiBitPacket` 
+- Run the following command to generate the visual studio solution file. `cmake -S . -B build`
+- Open the Visual Studio solution file created inside the `build` folder.
+- Build the solution in Release mode. The python dynamic library will be built inside the `build\Rlease\` folder.
+- Run the Python example script `pyExample_emotibitPacket\example.py` folder
+
+# Example-Rounder (currently uses anaconda)
 ## Steps to Run Example
 * Run the following commands ***inside the same Anaconda terminal from earlier***:
 ```bash
