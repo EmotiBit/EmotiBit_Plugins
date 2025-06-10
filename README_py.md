@@ -52,18 +52,18 @@ conda activate EmotiBit-pyenv-modern
 
 # Example EmotiBitPacket
 - Notes:
-  - The EmotiBit Packet .h/.cpp files (and any dependencies) were copied to the `EmotiBit_Plugins\example_emotiBitPacket`. This was primarily done because the pybind11 bindinds had to be added to the EmotiBitPacket class. ToDo: figure out a way where this copy/paste is not required. We will probably have to wait till a point where the pybind11 bindings are added to the EmotiBitPacket header in the XPlat_Utils main release.
+  - The EmotiBit Packet .h/.cpp files (and any dependencies) were copied to the `EmotiBit_Plugins\src`. This was primarily done because the pybind11 bindinds had to be added to the EmotiBitPacket class. ToDo: figure out a way where this copy/paste is not required. We will probably have to wait till a point where the pybind11 bindings are added to the EmotiBitPacket header in the XPlat_Utils main release.
 ## Building the example
-- cd to `example_emotiBitPacket` 
+- cd to `pyExample_emotibitPacket` 
 - Run the following command to generate the visual studio solution file. `cmake -S . -B build`
 - Open the Visual Studio solution file created inside the `build` folder.
 - Build the solution in Release mode. The python dynamic library will be built inside the `build\Rlease\` folder.
-- Run the Python example script `pyExample_emotibitPacket\example.py` folder
+- Run the Python example script `pyExample_emotibitPacket\example.py` 
 
 # Example-Rounder 
 ## Steps to Run Example
 
-- cd to `src`
+- cd to `pyExample_alg01`
 - run the command `cmake -S . -B build`
 - After cmake runs successfully, a rounder.sln created in your build folder.
   - Open this file in Visual Studio and navigate to the top and make sure it says ***Release*** and not Debug.

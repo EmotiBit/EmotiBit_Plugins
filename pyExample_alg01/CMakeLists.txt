@@ -8,7 +8,7 @@ set(pybind11_DIR "${CMAKE_CURRENT_SOURCE_DIR}\\..\\py_envs\\emotibit_plugins\\Li
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 
-set(SOURCES alg01.cpp)
+set(SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/../src/alg01.cpp")
 
 pybind11_add_module(rounder ${SOURCES})
 
