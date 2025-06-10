@@ -2,7 +2,7 @@
 Examples and information to make EmotiBit plugins. The intention for this repo is to explain through examples and READMEs how to create algorithms and deploy them in different contexts (python, OF, Arduino, others). This is intended as an instructional repo as it's expected that algorithms will be distributed in many different repos hosted by many different users/organizations.
 
 # Installation Steps
-***This guide must be followed on a Windows machine***
+_This guide is written for windows OS._
 ## Requirements
 - Python (only required if porting to python)
 - Visual Studio 2022
