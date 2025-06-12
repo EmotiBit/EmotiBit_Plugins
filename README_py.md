@@ -62,27 +62,27 @@ cmake --build . --config Release
 ```
 - The following comman runs the python example. The expected result is for the script to round the input.
 ```bash
-python3 example.py -i 3.4
+python example.py -i 3.4
 ```
 
-# Adapting this to your C++ code
-- Add pybind11 bindings to your C++ source. Refer the [pybind11 documentation](https://pybind11.readthedocs.io/en/stable/basics.html) for more information.
-- Create a new CMakeLists.txt file that
-  - includes your source files in SOURCES
-  - provides path to the pybind11_DIR
-  - defines a new project
-- Run cmake to create visual studio solution
-- build the visual studio solution to create the `.pyd` file
-- use the `.pyd` file in your python script
-
 # Example EmotiBitPacket
-- Notes:
-  - The EmotiBit Packet .h/.cpp files (and any dependencies) were copied to the `EmotiBit_Plugins\src`. This was primarily done because the pybind11 bindinds had to be added to the EmotiBitPacket class. ToDo: figure out a way where this copy/paste is not required. We will probably have to wait till a point where the pybind11 bindings are added to the EmotiBitPacket header in the XPlat_Utils main release.
 ## Building the example
-- cd to `pyExample_emotibitPacket` 
-- Run the following command to generate the visual studio solution file. `cmake -S . -B build`
-- Open the Visual Studio solution file created inside the `build` folder.
-- Build the solution in Release mode. The python dynamic library will be built inside the `build\Rlease\` folder.
+- To make this example work, you will need to copy/clone the `EmotiBit_XPlat_Utils` repository into the `src` folder.
+  - cd to the `src` folder.
+  - clone using `git clone https://github.com/EmotiBit/EmotiBit_XPlat_Utils`
+- cd to `pyExample_emotibitPacket` and run the following commands
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build . --config Release
+```
 - Run the Python example script `pyExample_emotibitPacket\example.py` 
 
+# Adapting this to your C++ code
+- Add pybind11 bindings to a file `bindings_<srcName>.cpp`. Refer the [pybind11 documentation](https://pybind11.readthedocs.io/en/stable/basics.html) for more information.
+- Create a new CMakeLists.txt file that
+  - creates a lib from your source files
+  - creates the pyd file from the src library
+- Run the cmake commands above to create a build the project.
 
