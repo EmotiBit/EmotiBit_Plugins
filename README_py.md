@@ -1,8 +1,8 @@
 # Porting an algorithm from C++ to Python
 
 ## Why?
-The goal of this project is to allow users to take an algorithm written in C++ and translate that into runnable Python code.
-This could allow a user to develop C++ code and run it on the EmotiBit's firmware, software, and through Python hitting three different metrics.
+The goal of this project is to allow users to take an algorithm written in C++ and translate it into runnable Python code.
+This could allow a user to develop C++ code and run it on the EmotiBit's firmware, software, and through Python, hitting three different metrics.
 
 ## How it works
 - We use pybind11 to create bindings for existing c++ code to a dynamic python library. These bings get added to a bindings_\<srcFileName\>.cpp.
@@ -22,7 +22,7 @@ PYBIND11_MODULE(EmotiBitPacket, m) {
 - The flow to go from .cpp to .pyd looks like
   - Create a CMakeLists that lists the pybind module and its dependency on the source file library.
   - Run cmake to create build files
-  - Build hte files created in the previous tep to create the `.pyd` file
+  - Build the files created in the previous step to create the `.pyd` file
 
 
 ## Creating python-env with pybind11
@@ -60,7 +60,7 @@ cd build
 cmake ..
 cmake --build . --config Release
 ```
-- The following comman runs the python example. The expected result is for the script to round the input.
+- The following command runs the python example. The expected result is for the script to round the input.
 ```bash
 python example.py -i 3.4
 ```
