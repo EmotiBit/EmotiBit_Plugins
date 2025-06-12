@@ -1,7 +1,7 @@
 import sys
 import os
 cur_dir = os.path.dirname(__file__)
-pyd_dir = os.path.join(cur_dir, '../src/build/Release')
+pyd_dir = os.path.join(cur_dir, 'build/Release')
 sys.path.append(os.path.abspath(pyd_dir))
 
 # NOTE: You will likely see an error here for whatever IDE you use.
