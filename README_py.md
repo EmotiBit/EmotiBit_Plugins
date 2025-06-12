@@ -5,7 +5,7 @@ The goal of this project is to allow users to take an algorithm written in C++ a
 This could allow a user to develop C++ code and run it on the EmotiBit's firmware, software, and through Python hitting three different metrics.
 
 ## How it works
-- We use pybind11 to create bindings for existing c++ code to a dynamic python library. These bings get added to a bindings_<srcFileName>.cpp.
+- We use pybind11 to create bindings for existing c++ code to a dynamic python library. These bings get added to a bindings_\<srcFileName\>.cpp.
 - These bindings essentially define the class/function prototypes, in the pybind11 format. An example of a binding would look like
 ```c++
 PYBIND11_MODULE(EmotiBitPacket, m) {
