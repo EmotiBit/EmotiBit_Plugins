@@ -11,9 +11,11 @@ set(pybind11_DIR "${CMAKE_CURRENT_SOURCE_DIR}\\..\\py_envs\\emotibit_plugins\\Li
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 
-set(SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/../src/EmotiBitPacket.cpp")
-# CMake function is a convenience helper provided by the Pybind11 project
-pybind11_add_module(EmotiBitPacket ${SOURCES})
+add_library(EmotiBitPacket_lib STATIC "${CMAKE_CURRENT_SOURCE_DIR}/../src/EmotiBit_XPlat_Utils/src/EmotiBitPacket.cpp")
+target_include_directories(EmotiBitPacket_lib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../src/EmotiBit_XPlat_Utils/src/")
 
-# for the pre-processor gaurd around pybind11 definitions in cpp file
-target_compile_definitions(EmotiBitPacket PRIVATE PYBIND11_ENABLED)
+# CMake function is a convenience helper provided by the Pybind11 project
+pybind11_add_module(EmotiBitPacket bindings_EmotiBitPacket.cpp)
+
+target_link_libraries(EmotiBitPacket PRIVATE EmotiBitPacket_lib)
+target_include_directories(EmotiBitPacket PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../src/EmotiBit_XPlat_Utils/src/")

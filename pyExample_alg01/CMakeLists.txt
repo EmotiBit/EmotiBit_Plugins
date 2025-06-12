@@ -8,8 +8,12 @@ set(pybind11_DIR "${CMAKE_CURRENT_SOURCE_DIR}\\..\\py_envs\\emotibit_plugins\\Li
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 
-set(SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/../src/alg01.cpp")
+# Add your C++ library source file
+add_library(alg01 STATIC "${CMAKE_CURRENT_SOURCE_DIR}/../src/alg01.cpp")
+target_include_directories(alg01 PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../src/") # Include its own header
 
-pybind11_add_module(rounder ${SOURCES})
+pybind11_add_module(rounder bindings_alg01.cpp)
 
-target_compile_definitions(rounder PRIVATE PYBIND11_ENABLED)
+# Link your pybind11 module to your C++ library
+target_link_libraries(rounder PRIVATE alg01)
+target_include_directories(rounder PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../src/")

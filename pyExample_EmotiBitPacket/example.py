@@ -1,7 +1,7 @@
 import sys
 import os
 cur_dir = os.path.dirname(__file__)
-pyd_dir = os.path.join(cur_dir, '../example_emotibitPacket/build/Release')
+pyd_dir = os.path.join(cur_dir, 'build/Release')
 sys.path.append(os.path.abspath(pyd_dir))
 
 # NOTE: You will likely see an error here for whatever IDE you use.
@@ -16,7 +16,7 @@ def main():
     args = parser.parse_args()
     header = EmotiBitPacket.createHeader("TT",123456,8008,2,1,100)
     header_str = EmotiBitPacket.headerToString(header)
-    print(header_str)
+    print("Header: {0}".format(header_str))
     # using createPacket function overload type 1
     # packet = EmotiBitPacket.createPacket("TT",8008,"MY_PAYLOAD",2,1,100)
     # print(packet, end='')
@@ -26,6 +26,6 @@ def main():
     # using createPacket function overload type 2
     payload = ["apple", "banana", "cherry", "date"]
     packet = EmotiBitPacket.createPacket("TT",8008,payload,1,100)
-    print(packet, end='')
+    print("packet: {0}".format(packet), end='')
 if __name__ == "__main__":
     main()

@@ -38,3 +38,4 @@ py_envs/*/
 
 # dynamic libraries
 **/*.pyd
+/src/*/
