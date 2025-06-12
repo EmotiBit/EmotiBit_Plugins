@@ -1,5 +1,17 @@
 # Porting an algorithm from C++ to Python
 
+## Table of Contents
+- [Why?](#why?)
+- [How it works](#how-it-works)
+- [Requirements](#Requirements)
+  - [Creating python-env with pybind11](#Creating-python-env-with-pybind11)
+    - [Using venv (recommended)](#Using-venv)
+    - [Using anaconda](#Using-anaconda)
+- [Examples](#Examples)
+  - [Rounder](#Rounder)
+  - [EmotiBitPacket](#EmotiBitPacket)
+- [Adapting this to your C++ code](#Adapting-this-to-your-C++-code)
+
 ## Why?
 The goal of this project is to allow users to take an algorithm written in C++ and translate it into runnable Python code.
 This could allow a user to develop C++ code and run it on the EmotiBit's firmware, software, and through Python, hitting three different metrics.
@@ -24,11 +36,8 @@ PYBIND11_MODULE(EmotiBitPacket, m) {
   - Run cmake to create build files
   - Build the files created in the previous step to create the `.pyd` file
 
-
-## Creating python-env with pybind11
-_These instructions have been tested on Windows_
-
-### Creating an environment in python
+## Requirements
+### Creating python-env with pybind11
 #### Using venv
 - Open a new command prompt window
 - `cd` to the EmotiBit_Plugins repository
@@ -49,8 +58,9 @@ conda env update --name EmotiBit-pyenv-modern --file .\EmotiBit-pyenv-modern.yml
 conda activate EmotiBit-pyenv-modern
 ```
 
-# Example-Rounder 
-## Steps to Run Example
+## Examples
+### Rounder 
+#### Steps to Run Example
 
 - cd to `pyExample_alg01`
 - run the following commands
@@ -65,8 +75,8 @@ cmake --build . --config Release
 python example.py -i 3.4
 ```
 
-# Example EmotiBitPacket
-## Building the example
+### EmotiBitPacket
+#### Building the example
 - To make this example work, you will need to copy/clone the `EmotiBit_XPlat_Utils` repository into the `src` folder.
   - cd to the `src` folder.
   - clone using `git clone https://github.com/EmotiBit/EmotiBit_XPlat_Utils`
@@ -79,7 +89,7 @@ cmake --build . --config Release
 ```
 - Run the Python example script `pyExample_emotibitPacket\example.py` 
 
-# Adapting this to your C++ code
+## Adapting this to your C++ code
 - Add pybind11 bindings to a file `bindings_<srcName>.cpp`. Refer the [pybind11 documentation](https://pybind11.readthedocs.io/en/stable/basics.html) for more information.
 - Create a new CMakeLists.txt file that
   - creates a lib from your source files
