@@ -5,7 +5,6 @@ Examples and information to make EmotiBit plugins. The intention for this repo i
 _This guide is written for windows OS._
 ## Requirements
 - Python (only required if porting to python)
-- Visual Studio 2022
 - CMAKE (ToDo: specify minimum version required)
 
 ## Steps
