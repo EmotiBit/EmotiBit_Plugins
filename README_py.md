@@ -5,7 +5,7 @@ The goal of this project is to allow users to take an algorithm written in C++ a
 This could allow a user to develop C++ code and run it on the EmotiBit's firmware, software, and through Python hitting three different metrics.
 
 ## How it works
-- We use pybind11 to create bindings for existing c++ code to a dynamic python library.
+- We use pybind11 to create bindings for existing c++ code to a dynamic python library. These bings get added to a bindings_<srcFileName>.cpp.
 - These bindings essentially define the class/function prototypes, in the pybind11 format. An example of a binding would look like
 ```c++
 PYBIND11_MODULE(EmotiBitPacket, m) {
@@ -18,12 +18,11 @@ PYBIND11_MODULE(EmotiBitPacket, m) {
 		.def(py::init<>());
 }
 ```
-- The pybind11 python library (installed in the virtual environment) contains the source code to perform the mapping from a c++ file to a `.pyd` file.
+- The pybind11 python library (installed in the virtual environment) performs the mapping from c++ file to a `.pyd` file.
 - The flow to go from .cpp to .pyd looks like
-  - Create a CMakeLists file that lists the cpp source files along with definition for the pybind11 module.
-  - Create Visual Studio sln file using CMAKE
-  - Build Visual Studio project to create the `.pyd` file
-  - Run the python script that uses C++ cource code refernce, after adding the path/to/pyd file in the python script
+  - Create a CMakeLists that lists the pybind module and its dependency on the source file library.
+  - Run cmake to create build files
+  - Build hte files created in the previous tep to create the `.pyd` file
 
 
 ## Creating python-env with pybind11
@@ -50,31 +49,21 @@ conda env update --name EmotiBit-pyenv-modern --file .\EmotiBit-pyenv-modern.yml
 conda activate EmotiBit-pyenv-modern
 ```
 
-# Example EmotiBitPacket
-- Notes:
-  - The EmotiBit Packet .h/.cpp files (and any dependencies) were copied to the `EmotiBit_Plugins\src`. This was primarily done because the pybind11 bindinds had to be added to the EmotiBitPacket class. ToDo: figure out a way where this copy/paste is not required. We will probably have to wait till a point where the pybind11 bindings are added to the EmotiBitPacket header in the XPlat_Utils main release.
-## Building the example
-- cd to `pyExample_emotibitPacket` 
-- Run the following command to generate the visual studio solution file. `cmake -S . -B build`
-- Open the Visual Studio solution file created inside the `build` folder.
-- Build the solution in Release mode. The python dynamic library will be built inside the `build\Rlease\` folder.
-- Run the Python example script `pyExample_emotibitPacket\example.py` 
-
 # Example-Rounder 
 ## Steps to Run Example
 
 - cd to `pyExample_alg01`
-- run the command `cmake -S . -B build`
-- After cmake runs successfully, a rounder.sln created in your build folder.
-  - Open this file in Visual Studio and navigate to the top and make sure it says ***Release*** and not Debug.
-  - Now navigate to Build > Build Solution
-  - This will create a rounder.pyd file in the release folder.
+- run the following commands
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build . --config Release
+```
+- The following comman runs the python example. The expected result is for the script to round the input.
 ```bash
 python3 example.py -i 3.4
 ```
-* The program should output a rounded version of your number!
-
-***NOTE: The section below remains undeveloped. Consider confronting the GitHub repository issue associated to design a better solution.***
 
 # Adapting this to your C++ code
 - Add pybind11 bindings to your C++ source. Refer the [pybind11 documentation](https://pybind11.readthedocs.io/en/stable/basics.html) for more information.
@@ -85,3 +74,15 @@ python3 example.py -i 3.4
 - Run cmake to create visual studio solution
 - build the visual studio solution to create the `.pyd` file
 - use the `.pyd` file in your python script
+
+# Example EmotiBitPacket
+- Notes:
+  - The EmotiBit Packet .h/.cpp files (and any dependencies) were copied to the `EmotiBit_Plugins\src`. This was primarily done because the pybind11 bindinds had to be added to the EmotiBitPacket class. ToDo: figure out a way where this copy/paste is not required. We will probably have to wait till a point where the pybind11 bindings are added to the EmotiBitPacket header in the XPlat_Utils main release.
+## Building the example
+- cd to `pyExample_emotibitPacket` 
+- Run the following command to generate the visual studio solution file. `cmake -S . -B build`
+- Open the Visual Studio solution file created inside the `build` folder.
+- Build the solution in Release mode. The python dynamic library will be built inside the `build\Rlease\` folder.
+- Run the Python example script `pyExample_emotibitPacket\example.py` 
+
+
