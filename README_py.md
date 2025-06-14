@@ -79,7 +79,7 @@ python example.py -i 3.4
 #### Building the example
 - To make this example work, you will need to copy/clone the `EmotiBit_XPlat_Utils` repository into the `src` folder.
   - cd to the `src` folder.
-  - clone using `git clone https://github.com/EmotiBit/EmotiBit_XPlat_Utils`
+  - clone using `git clone https://github.com/EmotiBit/EmotiBit_XPlat_Utils`. Checkout the following commit `393b611ee0d0c1f1cec70e243fd5b643c2e25250`
 - cd to `pyExample_emotibitPacket` and run the following commands
 ```bash
 mkdir build
