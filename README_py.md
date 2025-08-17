@@ -1,9 +1,9 @@
 # Porting an algorithm from C++ to Python
 
 ## Table of Contents
-- [Why?](#why?)
+- [Why?](#why)
 - [How it works](#how-it-works)
-- [Requirements](#Requirements)
+- [Requirements](#requirements)
   - [Setting up Python virtual environment](#setting-up-python-virtual-environment)
 - [Adapting this to your C++ code](#adapting-this-to-your-c-code)
 - [Examples](#Examples)
