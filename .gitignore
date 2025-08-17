@@ -39,3 +39,9 @@ py_envs/*/
 # dynamic libraries
 **/*.pyd
 /src/*/
+
+# links to Arduino/libraries
+**/src/libraries
+
+# generated files from algorithm
+**/generated.csv
