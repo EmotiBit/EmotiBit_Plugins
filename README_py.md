@@ -6,9 +6,9 @@
 - [Requirements](#requirements)
   - [Setting up Python virtual environment](#setting-up-python-virtual-environment)
 - [Adapting this to your C++ code](#adapting-this-to-your-c-code)
-- [Examples](#Examples)
-  - [Rounder](#Rounder)
-  - [EmotiBitPacket](#EmotiBitPacket)
+- [Examples](#examples)
+  - [Rounder](#rounder)
+  - [EmotiBitPacket](#emotibitpacket)
   - [Brainflow SpO2 Algorithm](#brainflow-spo2-algorithm)
 
 ## Why?
@@ -39,19 +39,19 @@ PYBIND11_MODULE(EmotiBitPacket, m) {
 ### Setting up Python Virtual Environment
 - Open a new command prompt window
 - `cd` to `EmotiBit_Plugins/py_envs`
-- Run the following command `python -m venv plugins`
+- Run the following command `python -m venv emotibit_plugins`
   - This creates a new folder called `plugins` containing the virtual Python environment
 - Activate the new environment:
-  - Windows (cmd): `.\plugins\Scripts\activate.bat`
-  - Windows (PowerShell): `.\plugins\Scripts\Activate.ps1`
-  - macOS/Linux (bash/zsh): `source plugins/bin/activate`
+  - Windows (cmd): `.\emotibit_plugins\Scripts\activate.bat`
+  - Windows (PowerShell): `.\emotibit_plugins\Scripts\Activate.ps1`
+  - macOS/Linux (bash/zsh): `source emotibit_plugins/bin/activate`
 - Run the following command to install pybind11. `pip install pybind11==2.13.5`
 
 ## Adapting this to your C++ code
 - Add pybind11 bindings to a file `bindings_<srcName>.cpp`. Refer the [pybind11 documentation](https://pybind11.readthedocs.io/en/stable/basics.html) for more information.
 - Create a new CMakeLists.txt file that
-  - creates a lib from your source files
-  - creates the pyd file from the src library
+  - Builds a library from your source files
+  - Builds the Python module (`.pyd` or `.so`) file from that library
 - Run the `cmake` commands from the examples below to create a build the project.  
 
 Refer to the examples below to see what `bindings.cpp` and `CMakeLists.txt` should look like. 
@@ -81,4 +81,6 @@ cmake --build build --config Release
 - Run the Python example script `pyExample_emotibitPacket\example.py` 
 
 ### Brainflow SpO2 Algorithm
-Refer to the EmotiBit Brainflow SpO2 Algorithm [repo](https://github.com/EmotiBit/EmotiBit_Brainflow_SpO2_Algorithm/tree/master/pybind) for detailed instructions on how to compile the algorithm using pybind.
+- Clone the EmotiBit Brainflow SpO2 Algorithm [repo](https://github.com/EmotiBit/EmotiBit_Brainflow_SpO2_Algorithm) into any directory
+- `cd` into the `EmotiBit Brainflow SpO2 Algorithm` folder and checkout the following commit: `7bc9dc3b02f361c37e9e917477abefe9f5468a68`
+- Follow the instructions under `pybind/README.md` to finish building the algorithm
