@@ -45,7 +45,7 @@ PYBIND11_MODULE(EmotiBitPacket, m) {
   - replace `<env-name>` with the environment name
 - Activate the new environment by running the command `.\py_envs\<env-name>\Scripts\activate.bat`
   - You will see the prompt in the terminal change. It now shows the python environment in parenthesis.
-- Run the following command to install bypind11. `pip install pybind11==2.13.5`
+- Run the following command to install pybind11. `pip install pybind11==2.13.5`
 
 #### Using anaconda
 - Download [Anaconda](https://www.anaconda.com/download/) as shown here.
