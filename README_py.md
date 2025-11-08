@@ -40,7 +40,7 @@ PYBIND11_MODULE(EmotiBitPacket, m) {
 - Open a new command prompt window
 - `cd` to `EmotiBit_Plugins/py_envs`
 - Run the following command `python -m venv emotibit_plugins`
-  - This creates a new folder called `plugins` containing the virtual Python environment
+  - This creates a new folder called `emotibit_plugins` containing the virtual Python environment
 - Activate the new environment:
   - Windows (cmd): `.\emotibit_plugins\Scripts\activate.bat`
   - Windows (PowerShell): `.\emotibit_plugins\Scripts\Activate.ps1`
@@ -52,6 +52,7 @@ PYBIND11_MODULE(EmotiBitPacket, m) {
 - Create a new CMakeLists.txt file that
   - Builds a library from your source files
   - Builds the Python module (`.pyd` or `.so`) file from that library
+  - See [this CMakeLists.txt example](https://github.com/EmotiBit/EmotiBit_Plugins/blob/0a048bcbc8ba9a70dcde9f6bb976bd59fd62926b/pyExample_alg01/CMakeLists.txt#L1-L19)
 - Run the `cmake` commands from the examples below to create a build the project.  
 
 Refer to the examples below to see what `bindings.cpp` and `CMakeLists.txt` should look like. 
