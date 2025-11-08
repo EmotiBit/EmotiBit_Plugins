@@ -82,5 +82,5 @@ cmake --build build --config Release
 
 ### Brainflow SpO2 Algorithm
 - Clone the EmotiBit Brainflow SpO2 Algorithm [repo](https://github.com/EmotiBit/EmotiBit_Brainflow_SpO2_Algorithm) into any directory
-- `cd` into the `EmotiBit Brainflow SpO2 Algorithm` folder and checkout the following commit: `7bc9dc3b02f361c37e9e917477abefe9f5468a68`
-- Follow the instructions under `pybind/README.md` to finish building the algorithm
+- `cd` into the `EmotiBit Brainflow SpO2 Algorithm` folder and checkout the following commit: `569b53a39acc12d8487b19700f2abbc98e986bc7`
+- Follow the instructions under [`pybind/README.md`](https://github.com/EmotiBit/EmotiBit_Brainflow_SpO2_Algorithm/blob/569b53a39acc12d8487b19700f2abbc98e986bc7/pybind/README.md?plain=1#L1) to finish building the algorithm
